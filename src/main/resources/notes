@@ -1,0 +1,12 @@
+//        return httpSecurity
+//                .csrf(AbstractHttpConfigurer::disable)
+//                .formLogin(
+//                        httpForm -> {
+//                            httpForm
+//                                    .loginPage("/login").permitAll();
+//                        })
+//                .authorizeHttpRequests(registry -> {
+//                    registry.requestMatchers("/signup","/channels","/channels/add").permitAll();
+//                    registry.anyRequest().authenticated();
+//                })
+//                .build();

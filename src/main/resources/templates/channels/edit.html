@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/layout"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Edit Channel</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <main class="container py-5">
+        <h1>Edit Channel</h1>
+        <form th:object="${channel}" method="post" th:action="@{/channels/edit/{id}(id=${channel.channelId})}">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" name="name" class="form-control" th:field="*{name}">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea id="description" name="description" class="form-control" th:field="*{description}"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <select id="status" th:field="*{channelStatus.statusId}" class="form-select">
+                    <option value="" disabled>Select a status</option>
+                    <option th:each="status : ${status}"
+                            th:value="${status.statusId}"
+                            th:text="${status.title}"
+                            th:selected="${status.statusId == channel.channelStatus.statusId}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </main>
+</section>
+</body>
+</html>
