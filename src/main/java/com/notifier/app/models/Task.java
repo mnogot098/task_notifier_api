@@ -26,7 +26,7 @@ public class Task {
     @JoinColumn(name = "status_id", nullable = false)
     private TaskStatus taskStatus;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 }

@@ -24,6 +24,7 @@ public class AuthApiController {
 
     @Autowired
     UserService userService;
+    @Autowired
     UserAuthProvider userAuthProvider;
     @RequestMapping("login")
     public ResponseEntity<Map<String, Object>>  login(@RequestBody CredentialsDto credentialsDto) {
