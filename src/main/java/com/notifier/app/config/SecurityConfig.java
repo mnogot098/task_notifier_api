@@ -47,14 +47,12 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-
         return httpSecurity
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(new JwtAuthFilter(userAuthProvider), BasicAuthenticationFilter.class)
                 .authorizeHttpRequests(registry -> {
-                    registry.requestMatchers(HttpMethod.POST,"/api/login","/api/register", "/api/tasks").permitAll()
-                            .requestMatchers(HttpMethod.GET, "/api/tasks").permitAll()
+                    registry.requestMatchers(HttpMethod.POST, "/api/login", "/api/register").permitAll()
                             .anyRequest()
                             .authenticated();
                 })

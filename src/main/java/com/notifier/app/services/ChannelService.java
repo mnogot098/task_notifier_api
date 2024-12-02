@@ -19,7 +19,10 @@ public class ChannelService {
     private ChannelStatusRepository channelStatusRepository;
 
     public List<Channel> getAllChannels() {
-        return  channelRepository.findAll();
+        return channelRepository.findAll();
+    }
+    public List<Channel> getActiveChannels() {
+        return channelRepository.findByChannelStatus_StatusId(1);
     }
 
     public Optional<Channel> getChannelById(Integer id) {
@@ -33,6 +36,7 @@ public class ChannelService {
     public void deleteChannel(Integer id) {
         channelRepository.deleteById(id);
     }
+
     public List<ChannelStatus> getAllStatus() {
         return channelStatusRepository.findAll();
     }
@@ -47,6 +51,6 @@ public class ChannelService {
         existingChannel.setName(channel.getName());
         existingChannel.setDescription(channel.getDescription());
         existingChannel.setChannelStatus(channel.getChannelStatus());
-        channelRepository.save(existingChannel); // Update the channel in the database
+        channelRepository.save(existingChannel);
     }
 }

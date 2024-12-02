@@ -20,4 +20,6 @@ public class Channel {
     @ManyToOne
     @JoinColumn(name = "status_id", nullable = false)
     private ChannelStatus channelStatus;
+
+    private String channel_icon;
 }

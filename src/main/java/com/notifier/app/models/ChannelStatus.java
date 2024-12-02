@@ -13,8 +13,6 @@ public class ChannelStatus {
     private Integer statusId;
 
     @Column(nullable = false, length = 100)
-    private String title;
+    private String name;
 
-    @Column(nullable = false, length = 500)
-    private String description;
 }
